@@ -1,17 +1,6 @@
-{{-- @extends('layouts.voting')
-@section('content')
-    <div class="home-page">
-        <img src="{{ asset('css/images/ballot_box.jpg') }}" alt="Ballot Box" class="ballot">
-        <p class="subtitle">Secure, fast, and accessible voting at your fingertips.</p>
-        <h2 class="page-title">Welcome to the Online Voting System</h2>
-        <p>Please login using your citizenship ID to continue.</p>
-        <a href="/login" class="btn btn-primary vote-button">Login to Vote</a> <!--bootsrap-->
-    </div>
-@endsection --}}
-
 @extends('layouts.voting')
 @section('content')
-    <div class="home-page">
+    <div class="home-page page-bg">
 
         <img src="{{ asset('css/images/ballot_box.jpg') }}" class="ballot">
 

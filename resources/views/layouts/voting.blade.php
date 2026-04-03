@@ -14,7 +14,6 @@
 </head>
 
 <body>
-
     <div class="top-banner">
 
         <div class="banner-left">
@@ -40,6 +39,7 @@
 
     <!-- Page-specific scripts -->
     @yield('scripts')
+    </div>
 
 </body>
 

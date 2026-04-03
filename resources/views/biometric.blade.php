@@ -9,6 +9,8 @@
         <video id="video" autoplay></video>
         <br>
 
+        <!-- Snapshot preview -->
+        <img id="snapshot" alt="Face Snapshot">
         <button class="vote-button" onclick="capture()">Verify Face</button>
 
         <canvas id="canvas" style="display:none;"></canvas>
