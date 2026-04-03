@@ -1,0 +1,468 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+
+    position: absolute;
+    inset: 0;
+    background: rgba(177, 167, 167, 0.3);
+    z-index: 1;
+}
+
+.home-page {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+    gap: 20px;
+}
+
+.home-page * {
+    position: relative;
+    z-index: 2;
+    color: rgb(0, 0, 0);
+}
+
+.home-page .ballot {
+    width: 250px;
+    margin-bottom: 10px;
+}
+
+.home-page h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 16px;
+    opacity: 0.9;
+    margin-bottom: 10px;
+}
+
+.trust-text {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.home-page ul {
+    list-style-position: inside;
+    padding-left: 0;
+    text-align: center;
+}
+
+/* login page */
+.login-box {
+    max-width: 450px;
+    margin: 100px auto;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.continue-btn {
+    text-align: right;
+    margin-top: 20px;
+    margin-top: 30%;
+
+}
+
+.vote-button {
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: #1a3c6e;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(232, 109, 2, 0.2);
+    text-decoration: none;
+}
+
+.vote-button:hover {
+    background-color:#4F6272;
+}
+
+/* biometric page */
+.biometric-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 80px;
+}
+
+/* Camera size */
+#video {
+    width: 500px;
+    height: 380px;
+    border-radius: 10px;
+    border: 3px solid #1a3c6e;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* hidden canvas same size */
+#canvas {
+    width: 500px;
+    height: 380px;
+}
+
+/* message style */
+#message {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* Top Banner */
+.top-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4F6272;
+    color: white;
+    padding: 15px 30px;
+}
+
+.banner-left h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.banner-left .logo {
+    width: 50px;
+    margin-right: 12px;
+    vertical-align: middle;
+}
+
+.banner-left {
+    display: flex;
+    align-items: center;
+}
+
+.banner-right h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.banner-right p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Navbar overrides */
+.navbar {
+    background-color: #0d2a50;
+}
+
+.navbar-nav .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffd700 !important;
+    /* golden highlight on hover */
+}
+
+/*for candidates page*/
+
+/* Page alignment */
+.candidates-page {
+    text-align: center;
+    margin-top: 60px;
+}
+
+/* Make all candidate images uniform */
+.candidates-page .row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 20px; /* space between cards */
+}
+
+/* Make all candidate images the same size */
+.candidates-page .card-img-top {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Card styling upgrade */
+.card {
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: #ffffff;
+}
+
+/* Hover effect */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    background-color: #f8f8f8;
+}
+
+/* Candidate name */
+.card-title {
+    color: #1a3c6e;
+    font-weight: bold;
+}
+
+/* Vote button styling */
+.btn-success {
+    background-color: #1a3c6e;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    color: #ffffff;
+}
+
+/* Button hover */
+.btn-success:hover {
+    background-color: #16325c;
+}
+
+.party-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.party-icon {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+/* thank you page */
+
+/* Center everything */
+.mail-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f7fb;
+}
+
+/* Envelope base */
+.envelope {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background: #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Flap (top triangle) */
+.flap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #d6d6d6;
+    clip-path: polygon(0 0, 100% 0, 50% 50%);
+    transform-origin: top;
+    animation: openFlap 1s ease forwards;
+}
+
+/* Letter inside */
+.letter {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    background: white;
+    top: 100%;
+    left: 5%;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    opacity: 0;
+    animation: slideUp 1s ease forwards;
+    animation-delay: 0.8s;
+}
+
+/* Text styling */
+.letter h2 {
+    margin-bottom: 10px;
+}
+
+.letter p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Center everything */
+.mail-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f7fb;
+}
+
+/* Envelope base */
+.envelope {
+    position: relative;
+    width: 60vw;
+    /* 60% of screen width */
+    max-width: 600px;
+        /* don’t get TOO big */
+    height: 350px;
+    background: #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Flap (top triangle) */
+.flap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #d6d6d6;
+    clip-path: polygon(0 0, 100% 0, 50% 50%);
+    transform-origin: top;
+    animation: openFlap 1s ease forwards;
+}
+
+/* Letter inside */
+.letter {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    background: #54636f;
+    top: 100%;
+    left: 5%;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    opacity: 0;
+    animation: slideUp 1s ease forwards;
+    animation-delay: 0.8s;
+}
+
+/* Text styling */
+.letter h2 {
+    margin-bottom: 10px;
+}
+
+.letter p {
+    font-size: 14px;
+    color: white;
+}
+
+/* Links styled as buttons */
+.actions {
+    margin-top: 15px;
+}
+
+.btn-link {
+    display: inline-block;
+    margin: 5px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    background: #000;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-link:hover {
+    background: #1a3c6e;
+    
+    transform: translateY(-2px) scale(1.05);
+}
+
+/* Animations */
+@keyframes openFlap {
+    0% {
+        transform: rotateX(0deg);
+    }
+
+    100% {
+        transform: rotateX(180deg);
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        top: 100%;
+        opacity: 0;
+    }
+
+    100% {
+        top: 5%;
+        opacity: 1;
+    }
+}
+
+.actions {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: 1.5s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* results page */
+/* Full page layout */
+.results-full {
+    width: 100%;
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Make table BIG */
+.results-full .table {
+    width: 95%;
+    max-width: 1400px;
+    font-size: 18px;
+}
+
+/* Bigger cells */
+.results-full th,
+.results-full td {
+    padding: 18px;
+}
+
+.winner-row {
+    background-color: #d4edda;
+    font-weight: bold;
+    font-size: 18px;
+}
