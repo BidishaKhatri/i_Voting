@@ -5,10 +5,12 @@
         <div class="login-box">
             <h2 class="page-title">Voter Login</h2>
 
+            {{-- Displays validation errors returned from the backend. --}}
             @foreach ($errors->all() as $error)
                 <p style="color:red">{{ $error }}</p>
             @endforeach
 
+            {{-- Sends login data securely to the /login route. --}}
             <form method="POST" action="/login">
                 @csrf
 

@@ -20,6 +20,7 @@
 
             <tbody>
                 @foreach ($candidates as $index => $candidate)
+                    {{-- Highlights the candidate in first place with a special CSS class. --}}
                     <tr class="{{ $index == 0 ? 'winner-row' : '' }}">
 
                         <td>
@@ -41,5 +42,5 @@
 @endsection
 
 <script>
-    setTimeout(() => location.reload(), 5000); //updates every 5 sec.
+    setTimeout(() => location.reload(), 60000); //updates every 60 sec.
 </script>

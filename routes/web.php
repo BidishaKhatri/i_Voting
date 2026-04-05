@@ -6,6 +6,7 @@
     use App\Http\Controllers\LoginController;
     use App\Http\Controllers\CandidatesController;
 
+    //home page
     Route::get('/', function () {
         return view('home');
     })->name('home');
@@ -35,8 +36,8 @@
     });
 
     //Candidates
-    Route::get('/candidates', [CandidatesController::class, 'index']);
-    Route::post('/candidates', [CandidatesController::class, 'store']);
+    Route::get('/candidates', [CandidatesController::class, 'index']);  //index shows candidates 
+    Route::post('/candidates', [CandidatesController::class, 'store']);  //store records votes
 
     //thankyou
     Route::get('/thank-you', function () {
@@ -44,14 +45,13 @@
     });
 
     //results
-    //Counts votes ,Sorts highest → lowest , Makes leader appear first 
     Route::get('/results', function () {
         $candidates = DB::table('candidates')
-            ->leftJoin('votes', 'candidates.id', '=', 'votes.candidate_id')
-            ->select('candidates.name', 'candidates.party', DB::raw('COUNT(votes.id) as votes'))
+            ->leftJoin('votes', 'candidates.id', '=', 'votes.candidate_id') //LEFT JOIN ensures all candidates are included, even if they have 0 votes
+            ->select('candidates.name', 'candidates.party', DB::raw('COUNT(votes.id) as votes'))  //tells DB to count votes for each candidate and label it as votes
             ->groupBy('candidates.id', 'candidates.name', 'candidates.party')
-            ->orderByDesc('votes') // leaderboard (highest first)
-            ->get();
+            ->orderByDesc('votes') //Sorts highest → lowest, makes leader appear first 
+            ->get();  //contains all candidates with their vote count.
 
-        return view('results', compact('candidates'));
+        return view('results', compact('candidates'));  //['candidates' => $candidates]
     });

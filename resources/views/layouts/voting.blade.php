@@ -9,11 +9,13 @@
     <!-- Bootstrap CSS -->
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    {{-- Adds a CSRF token to prevent cross-site request forgery in forms. --}}
     <!--automatically generates a unique CSRF token for the user session.-->
 
 </head>
 
 <body>
+    {{-- banner section --}}
     <div class="top-banner">
 
         <div class="banner-left">

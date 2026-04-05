@@ -9,15 +9,17 @@ use Illuminate\Support\Facades\Mail;
 
 class CandidatesController extends Controller
 {
-    public function index()
+    public function index()  //Handles showing the candidates page.
     {
+        // Ensures only logged-in users can vote.
         if (!session()->has('voter_id')) {
             return redirect('/login');
         }
 
+        // Retrieves voter details from database.
         $voter = DB::table('users')->where('id', session('voter_id'))->first();
 
-
+        // Blocks users who already voted.
         if ($voter->has_voted) {
             return redirect('/thank-you')->with('error', 'You have already voted.');
         }
@@ -26,7 +28,7 @@ class CandidatesController extends Controller
         return view('candidates', compact('candidates'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request)  //Handles saving the vote.
     {
         // check session first
         if (!session()->has('voter_id')) {
@@ -61,7 +63,7 @@ class CandidatesController extends Controller
             ->where('id', $voterId)
             ->update(['has_voted' => 1]);
 
-        // Send email
+        // Send confirmation email
         $voter = DB::table('users')->where('id', $voterId)->first();
 
         Mail::raw('Thank you for voting. Your vote has been successfully recorded.', function ($message) use ($voter) {

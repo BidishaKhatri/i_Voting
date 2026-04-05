@@ -14,6 +14,7 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        // Validates that both fields are provided before processing.
         $request->validate([
             'citizenship_no' => 'required',
             'voter_id' => 'required',
@@ -44,6 +45,7 @@ class LoginController extends Controller
             return back()->withErrors(['You have already voted.']);
         }
 
+        // Stores user info in session so they stay logged in.
         session([
             'voter_id' => $user->id,
             'voter_name' => $user->first_name
@@ -52,6 +54,7 @@ class LoginController extends Controller
         return redirect('/biometric');
     }
 
+    // Logout clears the session to prevent unauthorized access, especially on shared devices.
     public function logout()
     {
         session()->forget('voter_id');
