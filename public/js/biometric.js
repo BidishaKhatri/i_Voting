@@ -11,13 +11,18 @@ function capture() {
     const canvas = document.getElementById('canvas');  //When the user clicks Verify Face, a frame from the video is captured using canvas
     const video = document.getElementById('video');    // The camera stream is shown inside a <video> element. 
 
-    canvas.getContext('2d').drawImage(video, 0, 0, 400, 500);   //You take a frame from the video and draw it on a canvas
+    // canvas.getContext('2d').drawImage(video, 0, 0, 400, 500);   //You take a frame from the video and draw it on a canvas
+    const context = canvas.getContext('2d');
+
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
     const image = canvas.toDataURL("image/png");            //Then convert it to an image
 
-        // Show snapshot in the <img>
-    const img = document.getElementById('snapshot');
-    img.src = image;
-    img.style.display = 'block';
+    const messageEl = document.getElementById('message');
+    messageEl.textContent = '⏳ Verifying...';
+    messageEl.style.color = 'black';
 
     fetch('/verify-face', {         // The image is sent to the Laravel backend with fetch().
         method: 'POST',
@@ -27,6 +32,7 @@ function capture() {
         },
         body: JSON.stringify({ image: image })
     })
+
     .then(res => res.json())
     .then(data => {
         const messageEl = document.getElementById('message');
@@ -34,7 +40,7 @@ function capture() {
             messageEl.textContent = '✅ Face verified!';
             messageEl.style.color = 'green';
 
-            setTimeout(() => {
+        setTimeout(() => {
                 window.location.href = '/candidates';
             }, 1000);
         } else {

@@ -6,11 +6,13 @@
         <h2 class="page-title">Biometric Verification</h2>
         <p>Hello {{ session('voter_name') ?? '' }}, please verify your face to continue.</p>
 
-        <video id="video" autoplay></video>
+        {{-- <video id="video" autoplay></video> --}}
+        <div class="camera-wrapper">
+            <video id="video" autoplay></video>
+            <div class="oval-overlay"></div>
+        </div>
         <br>
 
-        <!-- Snapshot preview -->
-        <img id="snapshot" alt="Face Snapshot">
         <button class="vote-button" onclick="capture()">Verify Face</button>
 
         <canvas id="canvas" style="display:none;"></canvas>
