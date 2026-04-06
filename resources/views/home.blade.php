@@ -17,7 +17,7 @@
         <div class="how-it-works">
             <h3>How It Works</h3>
             <ul>
-                <li>Login using your Citizenship ID</li>
+                <li>Login using your Voter ID</li>
                 <li>Select your candidate</li>
                 <li>Submit your vote securely</li>
             </ul>
