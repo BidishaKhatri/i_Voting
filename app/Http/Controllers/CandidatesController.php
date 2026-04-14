@@ -11,19 +11,6 @@ class CandidatesController extends Controller
 {
     public function index()  //Handles showing the candidates page.
     {
-        // Ensures only logged-in users can vote.
-        if (!session()->has('voter_id')) {
-            return redirect('/login');
-        }
-
-        // Retrieves voter details from database.
-        $voter = DB::table('users')->where('id', session('voter_id'))->first();
-
-        // Blocks users who already voted.
-        if ($voter->has_voted) {
-            return redirect('/thank-you')->with('error', 'You have already voted.');
-        }
-
         $candidates = Candidate::all();
         return view('candidates', compact('candidates'));
     }
@@ -62,6 +49,8 @@ class CandidatesController extends Controller
         DB::table('users')
             ->where('id', $voterId)
             ->update(['has_voted' => 1]);
+
+        session(['has_voted' => true]);
 
         // Send confirmation email
         $voter = DB::table('users')->where('id', $voterId)->first();

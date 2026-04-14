@@ -26,6 +26,13 @@
                                 <span class="card-text">{{ $candidate->party }}</span>
                             </div>
 
+                            <div class="bio-section">
+                                <a href="https://en.wikipedia.org/wiki/{{ str_replace(' ', '_', $candidate->name) }}"
+                                    target="_blank" class="btn btn-outline-info btn-sm">
+                                    View Bio
+                                </a>
+                            </div>
+
                             {{-- Sends vote request to backend. --}}
                             <form method="POST" action="/candidates">
                                 @csrf

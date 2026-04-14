@@ -48,7 +48,9 @@ class LoginController extends Controller
         // Stores user info in session so they stay logged in.
         session([
             'voter_id' => $user->id,
-            'voter_name' => $user->first_name
+            'voter_name' => $user->first_name,
+            'has_voted' => $user->has_voted,
+            'biometric_verified' => false,
         ]);
 
         return redirect('/biometric');
@@ -57,7 +59,8 @@ class LoginController extends Controller
     // Logout clears the session to prevent unauthorized access, especially on shared devices.
     public function logout()
     {
-        session()->forget('voter_id');
+        //session()->forget('voter_id');
+        session()->flush();
         return redirect('/login');
     }
 }

@@ -6,7 +6,16 @@
             <h2>📊 Live Election Results</h2>
         </div>
 
-        {{-- <div class="container" style="margin-top: 30px;"> --}}
+
+        <div style="width: 70%; margin: auto; margin-top: 20px;">
+            <canvas id="resultsChart"></canvas>
+        </div>
+
+        @php
+            $names = $candidates->pluck('name');
+            $votes = $candidates->pluck('votes');
+        @endphp
+
         <div class="results-full">
 
             <table class="table table-bordered text-center">
@@ -40,9 +49,32 @@
                 </tbody>
             </table>
         </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+            const ctx = document.getElementById('resultsChart');
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: {!! json_encode($names) !!},
+                    datasets: [{
+                        label: 'Votes',
+                        data: {!! json_encode($votes) !!},
+                        backgroundColor: ['#1cc88a', '#4e73df', '#36b9cc', '#f6c23e', '#e74a3b', '#858796']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true
+                        }
+                    }
+                }
+            });
+            setTimeout(() => location.reload(), 60000); //updates every 60 sec.
+        </script>
     </div>
 @endsection
-
-<script>
-    setTimeout(() => location.reload(), 60000); //updates every 60 sec.
-</script>
